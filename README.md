@@ -1,9 +1,15 @@
 # Parent POM
 
-## Introduction
-This Maven parent POM is the base parent POM for all of the company's Maven artifacts.
+![badge-version](https://img.shields.io/badge/Version-v1.0.0-green.svg)
 
-It contains the general information and settings shared by all Maven modules.
+## Introduction
+This Maven parent POM is the base parent POM for all of the company's Maven artifacts. It contains the general 
+information and settings shared by all Maven modules.
+
+Relevant settings to be conscious of are:
+* Encoding, both source and output, is set to **UTF-8**
+* Resources under _src/main/resources_ are filtered
+* SNAPSHOT versions are only allowed during development
 
 ## Usage
 Include the following in the Maven POM of the Maven module you're working on:
