@@ -8,7 +8,10 @@
 
     <body>
         <release version="1.0.0" description="Initial release">
-            <action type="add" dev="aduursma">
+            <action type="add" dev="aduursma" date="25-12-2017" issue="1">
+                Added a Maven profile in which the release notes are generated.
+            </action>
+            <action type="add" dev="aduursma" date="25-12-2017">
                 Added initial project setup.
             </action>
         </release>

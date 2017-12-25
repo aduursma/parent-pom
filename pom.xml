@@ -50,6 +50,8 @@
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
     </properties>
 
     <build>
@@ -73,4 +75,58 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>release-notes</id>
+            <activation>
+                <file>
+                    <exists>src/changes/changes.xml</exists>
+                </file>
+            </activation>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-changes-plugin</artifactId>
+                        <version>${maven-changes-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>generate-release-notes</id>
+                                <phase>prepare-package</phase>
+                                <goals>
+                                    <goal>changes-report</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <filteringChanges>true</filteringChanges>
+                            <addActionDate>true</addActionDate>
+                            <publishDateFormat>dd-MM-yyyy</publishDateFormat>
+                            <issueLinkTemplatePerSystem>
+                                <GitHub>%URL%/issues/%ISSUE%</GitHub>
+                            </issueLinkTemplatePerSystem>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+
+            <reporting>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-changes-plugin</artifactId>
+                        <reportSets>
+                            <reportSet>
+                                <reports>
+                                    <report>changes-report</report>
+                                </reports>
+                            </reportSet>
+                        </reportSets>
+                    </plugin>
+                </plugins>
+            </reporting>
+        </profile>
+    </profiles>
 </project>
