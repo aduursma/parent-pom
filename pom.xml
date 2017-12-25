@@ -1,0 +1,76 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.9.RELEASE</version>
+    </parent>
+
+    <groupId>nl.agility.maven</groupId>
+    <artifactId>parent-pom</artifactId>
+    <version>1.0.0-${revision}</version>
+    <packaging>pom</packaging>
+
+    <name>Agility IT Services - Parent POM</name>
+    <inceptionYear>2017</inceptionYear>
+
+    <organization>
+        <name>Agility IT Services</name>
+        <url>http://www.agility-it-services.nl</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>aduursma</id>
+            <name>André Duursma</name>
+            <email>andre@agility-it-services.nl</email>
+            <url>https://github.com/aduursma</url>
+        </developer>
+    </developers>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/aduursma/parent-pom/issues</url>
+    </issueManagement>
+
+    <scm>
+        <url>https://github.com/aduursma/parent-pom</url>
+        <connection>scm:git:git://github.com/aduursma/parent-pom.git</connection>
+        <developerConnection>scm:git:git@github.com:aduursma/parent-pom.git</developerConnection>
+    </scm>
+
+    <properties>
+        <revision>SNAPSHOT</revision>
+        <java.version>1.8</java.version>
+
+        <env.BUILD_NUMBER>Local build on ${env.COMPUTERNAME} by ${user.name}</env.BUILD_NUMBER>
+        <env.BUILD_ID>${maven.build.timestamp}</env.BUILD_ID>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>
