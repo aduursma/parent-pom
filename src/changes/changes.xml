@@ -8,6 +8,9 @@
 
     <body>
         <release version="1.0.0" description="Initial release">
+            <action type="add" dev="aduursma" date="25-12-2017" issue="3">
+                Added the jacoco-maven-plugin to calculate unittest code coverage.
+            </action>
             <action type="add" dev="aduursma" date="25-12-2017" issue="2">
                 Added the maven-enforcer-plugin to enforce SNAPSHOT versions are only allowed during development.
             </action>
