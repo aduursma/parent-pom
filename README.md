@@ -12,7 +12,7 @@ Relevant settings to be conscious of are:
 * SNAPSHOT versions are only allowed during development
 
 ## Usage
-Include the following in the Maven POM of the Maven module you're working on:
+Include the following in the Maven POM of the Maven module you're working on (or use a derived parent which better suits your needs):
 
     <parent>
         <groupId>nl.agility.maven</groupId>
