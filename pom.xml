@@ -9,7 +9,7 @@
 
     <name>Agility IT Services - Parent POM</name>
     <description>The Agility IT Services' Parent POM</description>
-    <inceptionYear>2017</inceptionYear>
+    <inceptionYear>2020</inceptionYear>
 
     <organization>
         <name>Agility IT Services</name>
@@ -38,7 +38,9 @@
 
     <properties>
         <revision>SNAPSHOT</revision>
-        <java.version>1.8</java.version>
+        <java.version>11</java.version>
+        <downloadSources>true</downloadSources>
+        <downloadJavadocs>true</downloadJavadocs>
 
         <env.BUILD_NUMBER>Local build on ${env.COMPUTERNAME} by ${user.name}</env.BUILD_NUMBER>
         <env.BUILD_ID>${maven.build.timestamp}</env.BUILD_ID>
@@ -49,17 +51,18 @@
         <skip.unit.tests>false</skip.unit.tests>
         <jacoco.ut.execution.data.file>${project.build.directory}/jacoco.exec</jacoco.ut.execution.data.file>
 
-        <commons-io.version>2.5</commons-io.version>
-        <commons-lang3.version>3.6</commons-lang3.version>
-        <lombok.version>1.16.18</lombok.version>
-        <spring-boot.version>1.5.9.RELEASE</spring-boot.version>
-        <spring-cloud.version>Dalston.SR3</spring-cloud.version>
+        <commons-io.version>2.6</commons-io.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
+        <lombok.version>1.18.12</lombok.version>
+
+        <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
+        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
 
         <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
-        <maven-surefire-plugin.version>2.20.1</maven-surefire-plugin.version>
-        <jacoco-maven-plugin.version>0.7.9</jacoco-maven-plugin.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <jacoco-maven-plugin.version>0.8.5</jacoco-maven-plugin.version>
     </properties>
 
     <dependencies>
