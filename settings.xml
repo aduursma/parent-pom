@@ -11,9 +11,16 @@
             <id>github</id>
             <repositories>
                 <repository>
-                    <id>github</id>
+                    <id>github-parent-pom</id>
                     <name>GitHub Microservices Playground Apache Maven Packages</name>
-                    <url>https://maven.pkg.github.com/aduursma/microservices-playground</url>
+                    <url>https://maven.pkg.github.com/aduursma/parent-pom</url>
+                    <releases><enabled>true</enabled></releases>
+                    <snapshots><enabled>true</enabled></snapshots>
+                </repository>
+                <repository>
+                    <id>github-parent-services-pom</id>
+                    <name>GitHub Microservices Playground Apache Maven Packages</name>
+                    <url>https://maven.pkg.github.com/aduursma/parent-services-pom</url>
                     <releases><enabled>true</enabled></releases>
                     <snapshots><enabled>true</enabled></snapshots>
                 </repository>
@@ -23,7 +30,12 @@
 
     <servers>
         <server>
-            <id>github</id>
+            <id>github-parent-pom</id>
+            <username>${env.GITHUB_USERNAME}</username>
+            <password>${env.GITHUB_TOKEN}</password>
+        </server>
+        <server>
+            <id>github-parent-services-pom</id>
             <username>${env.GITHUB_USERNAME}</username>
             <password>${env.GITHUB_TOKEN}</password>
         </server>
