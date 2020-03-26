@@ -265,14 +265,4 @@
             <url>https://maven.pkg.github.com/aduursma/microservices-playground</url>
         </repository>
     </distributionManagement>
-
-    <repositories>
-        <repository>
-            <id>github</id>
-            <name>GitHub TobseF Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/aduursma/microservices-playground</url>
-            <releases><enabled>true</enabled></releases>
-            <snapshots><enabled>true</enabled></snapshots>
-        </repository>
-    </repositories>
 </project>
