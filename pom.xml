@@ -31,7 +31,7 @@
     </issueManagement>
 
     <scm>
-        <url>https://maven.pkg.github.com/aduursma/microservices-playground</url>
+        <url>https://github.com/aduursma/parent-pom</url>
         <connection>scm:git:git://github.com/aduursma/parent-pom.git</connection>
         <developerConnection>scm:git:git@github.com:aduursma/parent-pom.git</developerConnection>
     </scm>
@@ -261,8 +261,9 @@
     <distributionManagement>
         <repository>
             <id>github</id>
-            <name>GitHub OWNER Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/aduursma/microservices-playground</url>
+            <name>GitHub ${project.artifactId} Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/aduursma/${project.artifactId}</url>
         </repository>
     </distributionManagement>
+
 </project>
