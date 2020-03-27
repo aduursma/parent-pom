@@ -27,6 +27,6 @@ jobs:
       run: mvn -B package
 
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn clean deploy -s settings.xml
+      run: mvn -B -U clean deploy -s settings.xml
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_ORGANIZATION_TOKEN }}
