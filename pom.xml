@@ -204,7 +204,7 @@
         </profile>
 
         <profile>
-            <id>code-coverage-ut</id>
+            <id>code-coverage</id>
             <activation>
                 <file>
                     <exists>src/main/java</exists>
@@ -219,20 +219,17 @@
                         <version>${jacoco-maven-plugin.version}</version>
                         <executions>
                             <execution>
-                                <id>pre-unit-test</id>
+                                <id>prepare-agent</id>
                                 <goals>
                                     <goal>prepare-agent</goal>
                                 </goals>
                             </execution>
                             <execution>
-                                <id>post-unit-test</id>
+                                <id>report</id>
                                 <phase>test</phase>
                                 <goals>
                                     <goal>report</goal>
                                 </goals>
-                                <configuration>
-                                    <outputDirectory>${project.build.directory}/site/jacoco-ut</outputDirectory>
-                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
