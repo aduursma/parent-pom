@@ -113,9 +113,9 @@ jobs:
         env:
           ARTIFACT_ID: ${{ steps.get_artifact_id.outputs.value }}
           ARTIFACT_VERSION: ${{ steps.get_version.outputs.value }}
-        run:
-          - echo "::set-env name=ARTIFACT_ID::$ARTIFACT_ID"
-          - echo "::set-env name=ARTIFACT_VERSION::$ARTIFACT_VERSION"
+        run: |
+          echo "::set-env name=ARTIFACT_ID::$ARTIFACT_ID"
+          echo "::set-env name=ARTIFACT_VERSION::$ARTIFACT_VERSION"
 
       - name: Create Release
         id: create_release
