@@ -299,6 +299,10 @@
                                         <param>**.*AutoConfiguration</param>
                                         <param>**.*Config</param>
                                     </excludedClasses>
+                                    <excludedTestClasses>
+                                        <param>**.*Documentation</param>
+                                        <param>**.*IT</param>
+                                    </excludedTestClasses>
                                 </configuration>
                             </execution>
                         </executions>
