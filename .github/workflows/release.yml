@@ -92,8 +92,8 @@ jobs:
 
       - name: Prepare Release Asset
         run: mvn -B -U -Drevision=${GITHUB_SHA::8} -DskipTests clean jar:jar -s settings.xml
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_ORGANIZATION_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_ORGANIZATION_TOKEN }}
 
       - name: Get artifactId
         id: get_artifact_id
