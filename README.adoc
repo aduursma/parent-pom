@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/aduursma/parent-pom/workflows/Maven%20Package/badge.svg))](https://github.com/aduursma/parent-pom/actions)
+
 = Parent POM
 
 == Introduction
