@@ -204,7 +204,7 @@
         </profile>
 
         <profile>
-            <id>code-coverage</id>
+            <id>code-coverage-ut</id>
             <activation>
                 <file>
                     <exists>src/main/java</exists>
@@ -219,19 +219,38 @@
                         <version>${jacoco-maven-plugin.version}</version>
                         <executions>
                             <execution>
-                                <id>prepare-agent</id>
+                                <id>pre-unit-test</id>
                                 <goals>
                                     <goal>prepare-agent</goal>
                                 </goals>
+                                <configuration>
+                                    <propertyName>surefireArgLine</propertyName>
+                                </configuration>
                             </execution>
                             <execution>
-                                <id>report</id>
+                                <id>post-unit-test</id>
                                 <phase>test</phase>
                                 <goals>
                                     <goal>report</goal>
                                 </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>**/*Application.class</exclude>
+                                        <exclude>**/*Config.class</exclude>
+                                        <exclude>**/*AutoConfiguration.class</exclude>
+                                    </excludes>
+                                </configuration>
                             </execution>
                         </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <argLine>${surefireArgLine}</argLine>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
@@ -239,15 +258,15 @@
 
         <profile>
             <id>sonar</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
             <properties>
                 <sonar.projectKey>aduursma_${project.artifactId}</sonar.projectKey>
                 <sonar.organization>aduursma</sonar.organization>
                 <sonar.host.url>https://sonarcloud.io</sonar.host.url>
                 <sonar.coverage.exclusions>**/*Application.java,**/*Config.java,**/*AutoConfiguration.java</sonar.coverage.exclusions>
             </properties>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
             <build>
                 <plugins>
                     <plugin>
