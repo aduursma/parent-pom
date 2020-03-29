@@ -109,10 +109,13 @@ jobs:
           path: './target/maven-archiver/pom.properties'
           property: 'version'
 
-      - name: Set artifact name
+      - name: Set environment variables
         env:
-          ARTIFACT_NAME: ${{ steps.get_artifact_id.outputs.value }}-${{ steps.get_version.outputs.value }}
-        run: echo "::set-env name=ARTIFACT_NAME::$ARTIFACT_NAME"
+          ARTIFACT_ID: ${{ steps.get_artifact_id.outputs.value }}
+          ARTIFACT_VERSION: ${{ steps.get_version.outputs.value }}
+        run:
+          - echo "::set-env name=ARTIFACT_ID::$ARTIFACT_ID"
+          - echo "::set-env name=ARTIFACT_VERSION::$ARTIFACT_VERSION"
 
       - name: Create Release
         id: create_release
@@ -120,8 +123,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_ORGANIZATION_TOKEN }}
         with:
-          tag_name: ${{ env.ARTIFACT_NAME }}
-          release_name: Release ${{ env.ARTIFACT_NAME }}
+          tag_name: ${{ env.ARTIFACT_VERSION }}
+          release_name: Release ${{ env.ARTIFACT_VERSION }}
           draft: false
           prerelease: false
 
@@ -132,6 +135,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_ORGANIZATION_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./target/${{ env.ARTIFACT_NAME }}.jar
-          asset_name: ${{ env.ARTIFACT_NAME }}.jar
+          asset_path: ./target/${{ env.ARTIFACT_ID }}-${{ env.ARTIFACT_VERSION }}.jar
+          asset_name: ${{ env.ARTIFACT_ID }}-${{ env.ARTIFACT_VERSION }}.jar
           asset_content_type: application/java-archive
