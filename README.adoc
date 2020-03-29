@@ -1,6 +1,12 @@
-[![Actions Status](https://github.com/aduursma/parent-pom/workflows/Maven%20Package/badge.svg))](https://github.com/aduursma/parent-pom/actions)
-
 = Parent POM
+:toc: preamble
+:toclevels: 3
+
+:uri-build-status: https://github.com/aduursma/parent-pom/actions
+:img-build-status: https://img.shields.io/github/workflow/status/aduursma/parent-pom/Maven%20Package?label=Actions&logo=github
+:uri-version: https://github.com/aduursma/parent-pom/actions
+:img-version: https://img.shields.io/github/v/release/aduursma/parent-pom?label=Version&logo=github
+image:{img-build-status}[Build Status Badge,link={uri-build-status}] image:{img-version}[Version Badge,link={uri-version}]
 
 == Introduction
 This Maven parent POM is the base parent POM for all of the company's Maven artifacts. It contains the general 
