@@ -1,4 +1,4 @@
-name: Maven Package
+name: Release Pipeline
 
 on:
   push:
@@ -24,8 +24,8 @@ jobs:
         with:
           java-version: 11
 
-      - name: Build with Maven
-        run: mvn -B -U clean package -s settings.xml
+      - name: Build
+        run: mvn -B -U -Drevision=${GITHUB_SHA::8} clean package -s settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_ORGANIZATION_TOKEN }}
 
@@ -44,8 +44,8 @@ jobs:
         with:
           java-version: 11
 
-      - name: SonarCloud Scan
-        run: mvn -B -U clean verify -Psonar -Dsonar.login=${{ secrets.SONAR_TOKEN }} -s settings.xml
+      - name: Sonar Scan
+        run: mvn -B -U -Drevision=${GITHUB_SHA::8} clean verify -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Psonar -s settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_ORGANIZATION_TOKEN }}
 
@@ -66,6 +66,6 @@ jobs:
           java-version: 11
 
       - name: Publish to GitHub Packages
-        run: mvn -B -U clean deploy -DskipTests -s settings.xml
+        run: mvn -B -U -Drevision=${GITHUB_SHA::8} -DskipTests clean deploy -s settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_ORGANIZATION_TOKEN }}

@@ -3,7 +3,7 @@
 :toclevels: 3
 
 :uri-build-status: https://github.com/aduursma/parent-pom/actions
-:img-build-status: https://img.shields.io/github/workflow/status/aduursma/parent-pom/Maven%20Package?label=Actions&logo=github
+:img-build-status: https://img.shields.io/github/workflow/status/aduursma/parent-pom/Release%20Pipeline?label=Actions&logo=github
 :uri-version: https://github.com/aduursma/parent-pom/actions
 :img-version: https://img.shields.io/github/v/release/aduursma/parent-pom?label=Version&logo=github
 image:{img-build-status}[Build Status Badge,link={uri-build-status}] image:{img-version}[Version Badge,link={uri-version}]
