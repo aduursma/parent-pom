@@ -39,7 +39,7 @@
     <properties>
         <revision>SNAPSHOT</revision>
 
-        <java.version>11</java.version>
+        <java.version>14</java.version>
         <downloadSources>true</downloadSources>
         <downloadJavadocs>true</downloadJavadocs>
 
@@ -136,8 +136,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>13</source>
+                    <target>13</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
