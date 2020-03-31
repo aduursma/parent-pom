@@ -3,7 +3,7 @@
 :toclevels: 3
 
 :uri-build-status: https://github.com/aduursma/parent-pom/actions
-:img-build-status: https://img.shields.io/github/workflow/status/aduursma/parent-pom/Release%20Pipeline?color=green&label=GitHub%20Actions&logo=github
+:img-build-status: https://img.shields.io/github/workflow/status/aduursma/parent-pom/Release%20Pipeline?color=green&label=Release%20Pipeline&logo=github
 :uri-quality-gateway: https://sonarcloud.io/dashboard?id=aduursma_parent-pom
 :img-quality-gateway: https://img.shields.io/sonar/quality_gate/aduursma_parent-pom?color=green&label=Quality%20Gate&logo=sonarcloud&server=https%3A%2F%2Fsonarcloud.io&sonarVersion=8.2
 :uri-version: https://github.com/aduursma/parent-pom/actions
