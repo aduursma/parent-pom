@@ -38,6 +38,7 @@
 
     <properties>
         <revision>SNAPSHOT</revision>
+
         <java.version>11</java.version>
         <downloadSources>true</downloadSources>
         <downloadJavadocs>true</downloadJavadocs>
@@ -52,7 +53,7 @@
         <commons-lang3.version>3.9</commons-lang3.version>
         <lombok.version>1.18.12</lombok.version>
 
-        <spring-boot.version>2.2.5.RELEASE</spring-boot.version>
+        <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
 
         <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
