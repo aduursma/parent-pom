@@ -43,10 +43,10 @@ jobs:
           key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
           restore-keys: |
             ${{ runner.os }}-maven-
-      - name: Set up JDK 14
+      - name: Set up JDK 11
         uses: actions/setup-java@v1
         with:
-          java-version: 14
+          java-version: 11
 
       - name: Sonar Scan
         run: mvn -B -U clean verify -Dsonar.login=${{ secrets.SONAR_TOKEN }} -Psonar -s settings.xml
