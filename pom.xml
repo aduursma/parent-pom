@@ -51,6 +51,7 @@
 
         <commons-io.version>2.6</commons-io.version>
         <commons-lang3.version>3.9</commons-lang3.version>
+        <guava-testlib.version>29.0-jre</guava-testlib.version>
         <lombok.version>1.18.12</lombok.version>
 
         <spring-boot.version>2.2.6.RELEASE</spring-boot.version>
@@ -77,6 +78,13 @@
                     <groupId>org.junit.vintage</groupId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava-testlib</artifactId>
+            <version>${guava-testlib.version}</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
