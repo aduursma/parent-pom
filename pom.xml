@@ -9,7 +9,7 @@
 
     <name>Agility IT Services - Parent POM</name>
     <description>The Agility IT Services' Parent POM</description>
-    <inceptionYear>2020</inceptionYear>
+    <inceptionYear>2022</inceptionYear>
 
     <organization>
         <name>Agility IT Services</name>
@@ -39,59 +39,93 @@
     <properties>
         <revision>SNAPSHOT</revision>
 
-        <java.version>11</java.version>
-        <downloadSources>true</downloadSources>
-        <downloadJavadocs>true</downloadJavadocs>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <env.BUILD_NUMBER>Local build on ${env.COMPUTERNAME} by ${user.name}</env.BUILD_NUMBER>
         <env.BUILD_ID>${maven.build.timestamp}</env.BUILD_ID>
 
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>17</java.version>
+        <kotlin.version>1.7.20</kotlin.version>
+        <kotlin.compiler.jvmTarget>17</kotlin.compiler.jvmTarget>
+        <jackson-module-kotlin.version>2.13.4</jackson-module-kotlin.version>
 
-        <commons-io.version>2.6</commons-io.version>
-        <commons-lang3.version>3.11</commons-lang3.version>
-        <guava-testlib.version>30.1-jre</guava-testlib.version>
-        <lombok.version>1.18.18</lombok.version>
+        <spring-boot.version>2.7.5</spring-boot.version>
+        <spring-cloud.version>2021.0.4</spring-cloud.version>
 
-        <spring-boot.version>2.4.3</spring-boot.version>
-        <spring-cloud.version>2020.0.1</spring-cloud.version>
+        <downloadSources>true</downloadSources>
+        <downloadJavadocs>true</downloadJavadocs>
+
+        <maven-changes-templates.version>1.0.0-123</maven-changes-templates.version>
+        <maven-version-rules.version>1.0.0-123</maven-version-rules.version>
+
+        <pitest-junit5-plugin.version>1.1.0</pitest-junit5-plugin.version>
+        <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
 
         <maven-changes-plugin.version>2.12.1</maven-changes-plugin.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <maven-enforcer-plugin.version>1.4.1</maven-enforcer-plugin.version>
+        <maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+        <maven-dependency-plugin.version>3.2.0</maven-dependency-plugin.version>
+        <maven-deploy-plugin.version>2.8.2</maven-deploy-plugin.version>
+        <maven-enforcer-plugin.version>3.1.0</maven-enforcer-plugin.version>
+        <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
+        <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+        <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
+        <maven-pdf-plugin.version>1.4</maven-pdf-plugin.version>
+        <maven-project-info-reports-plugin.version>3.1.1</maven-project-info-reports-plugin.version>
+        <maven-resources-plugin.version>3.3.0</maven-resources-plugin.version>
+        <maven-scm-plugin.version>1.13.0</maven-scm-plugin.version>
+        <maven-site-plugin.version>3.12.1</maven-site-plugin.version>
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
-        <jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
-        <sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
-        <pitest-maven.version>1.6.3</pitest-maven.version>
-        <pitest-junit5-plugin.version>0.12</pitest-junit5-plugin.version>
+
+        <cd-versions-maven-plugin.version>0.1</cd-versions-maven-plugin.version>
+        <dependency-check-maven.version>7.3.0</dependency-check-maven.version>
+        <git-commit-id-maven-plugin.version>5.0.0</git-commit-id-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
+        <pitest-maven-plugin.version>1.9.8</pitest-maven-plugin.version>
+        <versions-maven-plugin.version>2.12.0</versions-maven-plugin.version>
+
+        <coverage.exclusions.default>src/test/**,**/*Application.*</coverage.exclusions.default>
+        <!-- Start with a ',' in case of overriding the empty additional coverage exclusions -->
+        <coverage.exclusions.additional></coverage.exclusions.additional>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>junit-vintage-engine</artifactId>
-                    <groupId>org.junit.vintage</groupId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava-testlib</artifactId>
-            <version>${guava-testlib.version}</version>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-reflect</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>kotlinx-coroutines-reactor</artifactId>
+        </dependency>
+        <dependency>
+			<groupId>org.jetbrains.kotlinx</groupId>
+			<artifactId>kotlinx-coroutines-slf4j</artifactId>
+		</dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-kotlin</artifactId>
+            <version>${jackson-module-kotlin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-test</artifactId>
             <scope>test</scope>
         </dependency>
-
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-test-junit5</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -99,7 +133,6 @@
         <dependencies>
             <!-- Spring Boot Dependencies -->
             <dependency>
-                <!-- Import dependency management from Spring Boot -->
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
@@ -115,37 +148,117 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
-            <!-- Apache Commons-->
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-lang3</artifactId>
-                <version>${commons-lang3.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-io</groupId>
-                <artifactId>commons-io</artifactId>
-                <version>${commons-io.version}</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
-    <build>
+        <build>
+        <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+        <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+
         <resources>
             <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
                 <filtering>true</filtering>
-                <directory>src/main/resources</directory>
+            </resource>
+            <resource>
+                <directory>${project.basedir}/src/changes</directory>
+                <filtering>true</filtering>
             </resource>
         </resources>
 
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <propertiesEncoding>${project.build.sourceEncoding}</propertiesEncoding>
+                    <nonFilteredFileExtensions>
+                        <nonFilteredFileExtension>jks</nonFilteredFileExtension>
+                    </nonFilteredFileExtensions>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
+                <configuration>
+                    <compilerPlugins>
+                        <plugin>jpa</plugin>
+                        <plugin>spring</plugin>
+                    </compilerPlugins>
+                    <args>
+                        <arg>-Xemit-jvm-type-annotations</arg>
+                    </args>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
+                                <sourceDir>${project.basedir}/target/generated-sources</sourceDir>
+                            </sourceDirs>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
+                                <sourceDir>${project.basedir}/target/generated-test-sources</sourceDir>
+                            </sourceDirs>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-maven-allopen</artifactId>
+                        <version>${kotlin.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jetbrains.kotlin</groupId>
+                        <artifactId>kotlin-maven-noarg</artifactId>
+                        <version>${kotlin.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <release>11</release>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -166,72 +279,154 @@
                             </rules>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>enforce-maven</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>3.8.2</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>io.github.jeffskj.cdversions</groupId>
+                <artifactId>cd-versions-maven-plugin</artifactId>
+                <version>${cd-versions-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate-release-pom</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>io.github.git-commit-id</groupId>
+                <artifactId>git-commit-id-maven-plugin</artifactId>
+                <version>${git-commit-id-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-git-info</id>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <failOnNoGitDirectory>false</failOnNoGitDirectory>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <skipPoms>false</skipPoms>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>${pitest-maven-plugin.version}</version>
+                <configuration>
+                    <outputFormats>
+                        <outputFormat>XML</outputFormat>
+                        <outputFormat>HTML</outputFormat>
+                    </outputFormats>
+                    <withHistory>true</withHistory>
+                    <timestampedReports>false</timestampedReports>
+                    <failWhenNoMutations>false</failWhenNoMutations>
+                    <excludedClasses combine.children="append">
+                        <param>**.*Application</param>
+                        <param>**.*AutoConfiguration</param>
+                        <param>**.*Config</param>
+                    </excludedClasses>
+                    <excludedTestClasses combine.children="append">
+                        <param>**.*Documentation</param>
+                        <param>**.*IT</param>
+                    </excludedTestClasses>
+                    <mutators>
+                        <mutator>ALL</mutator>
+                    </mutators>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-junit5-plugin</artifactId>
+                        <version>${pitest-junit5-plugin.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>${maven-clean-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${maven-install-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven-jar-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven-resources-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-scm-plugin</artifactId>
+                    <version>${maven-scm-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven-site-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${maven-surefire-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>${versions-maven-plugin.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
     <profiles>
         <profile>
-            <id>release-notes</id>
+            <id>unit-test</id>
             <activation>
-                <file>
-                    <exists>src/changes/changes.xml</exists>
-                </file>
+                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>all-profiles</name>
+                </property>
             </activation>
-
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-changes-plugin</artifactId>
-                        <version>${maven-changes-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>generate-release-notes</id>
-                                <phase>prepare-package</phase>
-                                <goals>
-                                    <goal>changes-report</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                        <configuration>
-                            <filteringChanges>true</filteringChanges>
-                            <addActionDate>true</addActionDate>
-                            <publishDateFormat>dd-MM-yyyy</publishDateFormat>
-                            <issueLinkTemplatePerSystem>
-                                <GitHub>%URL%/issues/%ISSUE%</GitHub>
-                            </issueLinkTemplatePerSystem>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
-
-            <reporting>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-changes-plugin</artifactId>
-                        <reportSets>
-                            <reportSet>
-                                <reports>
-                                    <report>changes-report</report>
-                                </reports>
-                            </reportSet>
-                        </reportSets>
-                    </plugin>
-                </plugins>
-            </reporting>
-        </profile>
-
-        <profile>
-            <id>code-coverage-ut</id>
-            <activation>
-                <file>
-                    <exists>src/main/java</exists>
-                </file>
-            </activation>
-
             <build>
                 <plugins>
                     <plugin>
@@ -254,13 +449,6 @@
                                 <goals>
                                     <goal>report</goal>
                                 </goals>
-                                <configuration>
-                                    <excludes>
-                                        <exclude>**/*Application.class</exclude>
-                                        <exclude>**/*AutoConfiguration.class</exclude>
-                                        <exclude>**/*Config.class</exclude>
-                                    </excludes>
-                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -278,48 +466,453 @@
         </profile>
 
         <profile>
-            <id>mutation-tests</id>
+            <id>mutation-test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-maven</artifactId>
+                        <version>${pitest-maven-plugin.version}</version>
+                        <configuration>
+                            <originBranch>${git.branch}</originBranch>
+                            <destinationBranch>origin/master</destinationBranch>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>run-mutation-tests</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>scmMutationCoverage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>mutation-test-all</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-maven</artifactId>
+                        <version>${pitest-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>run-mutation-tests</id>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>mutationCoverage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>mutation-test-local</id>
             <activation>
-                <file>
-                    <exists>src/main/java</exists>
-                </file>
+                <property>
+                    <name>all-profiles</name>
+                </property>
             </activation>
             <build>
                 <plugins>
                     <plugin>
                         <groupId>org.pitest</groupId>
                         <artifactId>pitest-maven</artifactId>
-                        <version>${pitest-maven.version}</version>
+                        <version>${pitest-maven-plugin.version}</version>
+                        <configuration>
+                            <destinationBranch>origin/${git.branch}</destinationBranch>
+                        </configuration>
                         <executions>
                             <execution>
+                                <id>run-mutation-tests</id>
                                 <phase>test</phase>
                                 <goals>
-                                    <goal>mutationCoverage</goal>
+                                    <goal>scmMutationCoverage</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>integration-test</id>
+            <activation>
+                <property>
+                    <name>all-profiles</name>
+                </property>
+            </activation>
+            <properties>
+                <skipUTs>false</skipUTs>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <skip>${skipUTs}</skip>
+                        </configuration>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>${jacoco-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>pre-integration-test</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>prepare-agent-integration</goal>
                                 </goals>
                                 <configuration>
-                                    <outputFormats>
-                                        <outputFormat>XML</outputFormat>
-                                    </outputFormats>
-                                    <withHistory>true</withHistory>
-                                    <excludedClasses>
-                                        <param>**.*Application</param>
-                                        <param>**.*AutoConfiguration</param>
-                                        <param>**.*Config</param>
-                                    </excludedClasses>
-                                    <excludedTestClasses>
-                                        <param>**.*Documentation</param>
-                                        <param>**.*IT</param>
-                                    </excludedTestClasses>
+                                    <propertyName>failsafeArgLine</propertyName>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>post-integration-test</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>report-integration</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.build.directory}/site/jacoco-it</outputDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>merge-unit-and-integration</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>merge</goal>
+                                </goals>
+                                <configuration>
+                                    <fileSets>
+                                        <fileSet>
+                                            <directory>${project.build.directory}</directory>
+                                            <includes>
+                                                <include>*.exec</include>
+                                            </includes>
+                                        </fileSet>
+                                    </fileSets>
+                                    <destFile>${project.build.directory}/jacoco-merged.exec</destFile>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>create-merged-report</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                                <configuration>
+                                    <dataFile>${project.build.directory}/jacoco-merged.exec</dataFile>
+                                    <outputDirectory>${project.reporting.outputDirectory}/jacoco-merged</outputDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>${maven-failsafe-plugin.version}</version>
+                        <configuration>
+                            <argLine>${failsafeArgLine}</argLine>
+                            <classesDirectory>${project.build.outputDirectory}</classesDirectory>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                </goals>
+                                <configuration>
+                                    <includes>
+                                        <include>**/*IT.*</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>verify-integration-tests</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>dependency-check</id>
+            <activation>
+                <property>
+                    <name>all-profiles</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.owasp</groupId>
+                        <artifactId>dependency-check-maven</artifactId>
+                        <version>${dependency-check-maven.version}</version>
+                        <configuration>
+                            <formats>
+                                <format>html</format>
+                                <format>json</format>
+                            </formats>
+                            <skipProvidedScope>false</skipProvidedScope>
+                            <skipRuntimeScope>false</skipRuntimeScope>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>check</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>check-for-updates</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>versions-maven-plugin</artifactId>
+                        <version>${versions-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>check-for-updates</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>display-parent-updates</goal>
+                                    <goal>display-property-updates</goal>
+                                    <goal>display-plugin-updates</goal>
+                                </goals>
+                                <configuration>
+                                    <rulesUri>classpath:///maven-version-rules.xml</rulesUri>
+                                    <outputFile>${project.build.directory}/outdated-dependencies.txt</outputFile>
                                 </configuration>
                             </execution>
                         </executions>
                         <dependencies>
                             <dependency>
-                                <groupId>org.pitest</groupId>
-                                <artifactId>pitest-junit5-plugin</artifactId>
-                                <version>${pitest-junit5-plugin.version}</version>
+                                <groupId>nl.agility.maven</groupId>
+                                <artifactId>maven-version-rules</artifactId>
+                                <version>${maven-version-rules.version}</version>
                             </dependency>
                         </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>update-versions</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>versions-maven-plugin</artifactId>
+                        <version>${versions-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>update-dependencies</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>update-parent</goal>
+                                    <goal>update-properties</goal>
+                                    <goal>commit</goal>
+                                </goals>
+                                <configuration>
+                                    <rulesUri>classpath:///maven-version-rules.xml</rulesUri>
+                                    <allowMajorUpdates>false</allowMajorUpdates>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>nl.agility.maven</groupId>
+                                <artifactId>maven-version-rules</artifactId>
+                                <version>${maven-version-rules.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>verify-release-notes</id>
+            <activation>
+                <file>
+                    <exists>${basedir}/src/changes/changes.xml</exists>
+                </file>
+            </activation>
+            <properties>
+                <maven.build.timestamp.format>dd-MM-yyyy</maven.build.timestamp.format>
+                <release.date>${maven.build.timestamp}</release.date>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>${maven-resources-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.build.directory}/changes</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${basedir}/src/changes</directory>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-changes-plugin</artifactId>
+                        <version>${maven-changes-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>verify-release-notes</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>changes-check</goal>
+                                </goals>
+                                <configuration>
+                                    <releaseDateFormat>dd-MM-yyyy</releaseDateFormat>
+                                    <xmlPath>${project.build.directory}/changes/changes.xml</xmlPath>
+                                    <skipSnapshots>true</skipSnapshots>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>email-release-announcement</id>
+            <properties>
+                <maven.build.timestamp.format>dd-MM-yyyy</maven.build.timestamp.format>
+                <release.date>${maven.build.timestamp}</release.date>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>${maven-resources-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>${project.build.directory}/changes</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>${basedir}/src/changes</directory>
+                                            <filtering>true</filtering>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <version>${maven-dependency-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>unpack</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>unpack</goal>
+                                </goals>
+                                <configuration>
+                                    <artifactItems>
+                                        <artifactItem>
+                                            <groupId>nl.agility.maven</groupId>
+                                            <artifactId>maven-changes-templates</artifactId>
+                                            <version>${maven-changes-templates.version}</version>
+                                            <type>jar</type>
+                                            <includes>release-announcement.vm</includes>
+                                        </artifactItem>
+                                    </artifactItems>
+                                    <outputDirectory>${basedir}/src/main/resources/announcement</outputDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-changes-plugin</artifactId>
+                        <version>${maven-changes-plugin.version}</version>
+                        <configuration>
+                            <xmlPath>${project.build.directory}/changes/changes.xml</xmlPath>
+                            <developmentTeam>Agility IT Services</developmentTeam>
+                            <mailSender>
+                                <name>Agility IT Services</name>
+                                <email>cicd@agility-it-services.nl</email>
+                            </mailSender>
+                            <toAddresses>
+                                <toAddress>andre@agility-it-services.nl</toAddress>
+                            </toAddresses>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>generate-announcement</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>announcement-generate</goal>
+                                </goals>
+                                <configuration>
+                                    <template>release-announcement.vm</template>
+                                    <templateDirectory>announcement</templateDirectory>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>send-announcement</id>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>announcement-mail</goal>
+                                </goals>
+                                <configuration>
+                                    <announcementFile>release-announcement.vm</announcementFile>
+                                    <subject>[ANNOUNCEMENT] - ${project.name} v${project.version} released</subject>
+                                    <mailContentType>text/html</mailContentType>
+                                    <smtpHost>smtp.github.com</smtpHost>
+                                    <smtpPort>25</smtpPort>
+                                </configuration>
+                            </execution>
+                        </executions>
                     </plugin>
                 </plugins>
             </build>
@@ -334,7 +927,11 @@
                 <sonar.projectKey>aduursma_${project.artifactId}</sonar.projectKey>
                 <sonar.organization>aduursma</sonar.organization>
                 <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-                <sonar.coverage.exclusions>**/*Application.java,**/*AutoConfiguration.java,**/*Config.java</sonar.coverage.exclusions>
+                <sonar.coverage.exclusions>${coverage.exclusions.default}${coverage.exclusions.additional}</sonar.coverage.exclusions>
+                <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+                <sonar.dependencyCheck.htmlReportPath>target/dependency-check-report.html</sonar.dependencyCheck.htmlReportPath>
+                <sonar.dependencyCheck.jsonReportPath>target/dependency-check-report.json</sonar.dependencyCheck.jsonReportPath>
+                <sonar.dependencyCheck.securityHotspot>true</sonar.dependencyCheck.securityHotspot>
             </properties>
             <build>
                 <plugins>
@@ -363,5 +960,4 @@
             <url>https://maven.pkg.github.com/aduursma/${project.artifactId}</url>
         </repository>
     </distributionManagement>
-
 </project>
