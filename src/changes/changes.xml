@@ -7,8 +7,8 @@
     </properties>
 
     <body>
-        <release version="1.0.0" description="Initial release">
-            <action type="add" dev="aduursma" date="25-03-2020">
+        <release version="1.0.0-${revision}" date="${release.date}" description="Initial release">
+            <action type="add" dev="aduursma" date="17-11-2022">
                 Initial project setup.
             </action>
         </release>
